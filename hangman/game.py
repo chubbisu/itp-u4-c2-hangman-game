@@ -27,13 +27,15 @@ def _uncover_word(answer_word, masked_word, character):
         raise InvalidGuessedLetterException()
         
     word = ''
+    answer_case = answer_word.lower()
+    character_case = character.lower()
         
-    if character.lower() not in answer_word.lower():
+    if character_case not in answer_case:
         return masked_word
 
     for index in range(len(answer_word)):
-        if character.lower() == answer_word[index].lower():
-            word += answer_word[index].lower()
+        if character_case == answer_case[index]:
+            word += answer_case[index]
         else:
             word += masked_word[index]
 
